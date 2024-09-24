@@ -1,4 +1,5 @@
 # PROJETO PARA CALCULO DE TAXA DE MORTALIDADE POR GENERO POR ANO E PAÍS
+-- Foi criado um mock do serviço INE para simular a leitura dos dados do serviço externo de INE
 
 ## Para rodar o projeto localmente, precisa:
     -- Maven a partir de 3.8

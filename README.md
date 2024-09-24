@@ -6,6 +6,7 @@
 ## Para rodar o projeto localmente, precisa:
     -- Maven a partir de 3.8
     -- JDK21
+    -- SpringBoot 3.4.0
     -- collection está anexado no projeto, pasta resource
     -- Obs.: As portas podem variar conforme o usuario local
     -- exemplo de arquivo .csv está anexado no projeto, pasta resource

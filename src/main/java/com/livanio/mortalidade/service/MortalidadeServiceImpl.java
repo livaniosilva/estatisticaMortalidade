@@ -10,12 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static com.livanio.mortalidade.util.UtilHelper.calculaPopulacao;
 import static java.math.BigDecimal.valueOf;
@@ -70,27 +72,23 @@ public class MortalidadeServiceImpl implements MortalidadeService {
 
     @Override
     public void uploadDadosMortalidade(String path) throws IOException {
-        /*Charset charset = StandardCharsets.UTF_8;
-        //read the file
-        List<String> fileContent = Files.readAllLines(Path.of(String.valueOf(file)), charset);
+        File estatisticFile = new File(path);
+         var estatistica = Files.readAllLines(estatisticFile.toPath())
+                 .stream()
+                 .map(line -> Arrays.stream(line.split("populacaoFeminina")).toList())
+                 .flatMap(Collection::stream)
+                 .toList();
 
-        // get the header
-        String[] header = fileContent.get(0).split(",");
-
-        AtomicInteger lineNumber = new AtomicInteger(1);
-
-        //fill the map
-        fileContent.stream()
-                .skip(1)
-                .forEach(line -> map.put(
-                        String.valueOf(lineNumber.getAndIncrement()),
-                        getRowData(header, line.split(","))));*/
-    }
-
-    private static Map<String, String> getRowData(final String[] header, final String[] line) {
-        return IntStream.range(0, header.length)
-                .mapToObj(i -> Map.entry(header[i], line[i]))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+         for(String dado : estatistica){
+             var dto = new MortalidadeDto();
+             dto.setCodPais(dado.split(";")[0]);
+             dto.setTxFeminino(new BigDecimal(dado.split(";")[1]));
+             dto.setTxMasculino(new BigDecimal(dado.split(";")[2]));
+             dto.setAno(Long.valueOf(dado.split(";")[3]));
+             dto.setPopulacaoMasculina(Long.valueOf(dado.split(";")[4]));
+             dto.setPopulacaoFeminina(Long.valueOf(dado.split(";")[5]));
+             of(repository.save(buildModelToEntity(dto)));
+         }
     }
 
     private static Mortalidade buildModelToEntity(MortalidadeDto dto) {
@@ -118,6 +116,7 @@ public class MortalidadeServiceImpl implements MortalidadeService {
         List<MortalidadeDto> mortalidadeDtoList = new ArrayList<>();
         for(Mortalidade mortalidade : mortalidades) {
             MortalidadeDto dto = new MortalidadeDto();
+            dto.setId(mortalidade.getId());
             dto.setCodPais(mortalidade.getCodPais());
             dto.setTxFeminino(mortalidade.getTxFeminino());
             dto.setTxMasculino(mortalidade.getTxMasculino());

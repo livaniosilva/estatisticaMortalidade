@@ -3,7 +3,6 @@ package com.livanio.mortalidade.util;
 import com.livanio.mortalidade.dto.Populacao;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 
 public class UtilHelper {
 

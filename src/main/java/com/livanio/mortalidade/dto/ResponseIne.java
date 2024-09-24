@@ -2,8 +2,6 @@ package com.livanio.mortalidade.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.math.BigDecimal;
-
 public class ResponseIne {
     private Long ano;
     @JsonProperty("obito_feminino")

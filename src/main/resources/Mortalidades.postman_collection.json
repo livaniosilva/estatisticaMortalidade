@@ -1,0 +1,239 @@
+{
+	"info": {
+		"_postman_id": "1112e223-942e-4792-87c8-bf53fba6dbd0",
+		"name": "Mortalidades",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer 45415211-669e-4066-a9f1-91468b1b36c8",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/candidate-passenger/data?draw=2&columns%5B0%5D.data=id&columns%5B0%5D.name=&columns%5B0%5D.searchable=true&columns%5B0%5D.orderable=true&columns%5B0%5D.search.value=&columns%5B0%5D.search.regex=false&columns%5B1%5D.data=name&columns%5B1%5D.name=&columns%5B1%5D.searchable=true&columns%5B1%5D.orderable=true&columns%5B1%5D.search.value=&columns%5B1%5D.search.regex=false&columns%5B2%5D.data=email&columns%5B2%5D.name=&columns%5B2%5D.searchable=true&columns%5B2%5D.orderable=true&columns%5B2%5D.search",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"candidate-passenger",
+						"data"
+					],
+					"query": [
+						{
+							"key": "draw",
+							"value": "2"
+						},
+						{
+							"key": "columns%5B0%5D.data",
+							"value": "id"
+						},
+						{
+							"key": "columns%5B0%5D.name",
+							"value": ""
+						},
+						{
+							"key": "columns%5B0%5D.searchable",
+							"value": "true"
+						},
+						{
+							"key": "columns%5B0%5D.orderable",
+							"value": "true"
+						},
+						{
+							"key": "columns%5B0%5D.search.value",
+							"value": ""
+						},
+						{
+							"key": "columns%5B0%5D.search.regex",
+							"value": "false"
+						},
+						{
+							"key": "columns%5B1%5D.data",
+							"value": "name"
+						},
+						{
+							"key": "columns%5B1%5D.name",
+							"value": ""
+						},
+						{
+							"key": "columns%5B1%5D.searchable",
+							"value": "true"
+						},
+						{
+							"key": "columns%5B1%5D.orderable",
+							"value": "true"
+						},
+						{
+							"key": "columns%5B1%5D.search.value",
+							"value": ""
+						},
+						{
+							"key": "columns%5B1%5D.search.regex",
+							"value": "false"
+						},
+						{
+							"key": "columns%5B2%5D.data",
+							"value": "email"
+						},
+						{
+							"key": "columns%5B2%5D.name",
+							"value": ""
+						},
+						{
+							"key": "columns%5B2%5D.searchable",
+							"value": "true"
+						},
+						{
+							"key": "columns%5B2%5D.orderable",
+							"value": "true"
+						},
+						{
+							"key": "columns%5B2%5D.search",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mortalidades",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/mortalidades?ano=2022&codPais=PT",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mortalidades"
+					],
+					"query": [
+						{
+							"key": "ano",
+							"value": "2022"
+						},
+						{
+							"key": "codPais",
+							"value": "PT"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mortalidades-por-ano",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/mortalidades/por-ano?ano=2022",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mortalidades",
+						"por-ano"
+					],
+					"query": [
+						{
+							"key": "ano",
+							"value": "2022"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AtualizaMortalidades",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codPais\": \"BR\",\r\n    \"txFeminino\": 6.6,\r\n    \"txMasculino\": 9.1,\r\n    \"ano\": 2023\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/mortalidade?ano=2023&codPais=PT",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mortalidade"
+					],
+					"query": [
+						{
+							"key": "ano",
+							"value": "2023"
+						},
+						{
+							"key": "codPais",
+							"value": "PT"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UploadRegistroMortalidade",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/mortalidades/upload-registros-mortalidades?file=C:/Users/LIVANIO/Downloads/estatistica_mortalidade.csv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mortalidades",
+						"upload-registros-mortalidades"
+					],
+					"query": [
+						{
+							"key": "file",
+							"value": "C:/Users/LIVANIO/Downloads/estatistica_mortalidade.csv"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

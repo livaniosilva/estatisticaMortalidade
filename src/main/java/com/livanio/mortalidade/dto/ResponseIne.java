@@ -24,6 +24,9 @@ public class ResponseIne {
         this.pais = pais;
     }
 
+    public ResponseIne() {
+    }
+
     public String getPais() {
         return pais;
     }

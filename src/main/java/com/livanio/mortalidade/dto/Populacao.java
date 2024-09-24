@@ -15,6 +15,11 @@ public class Populacao {
         this.populacaoMasculina = populacaoMasculina;
     }
 
+    public Populacao( Long populacaoFeminina, Long populacaoMasculina) {
+        this.populacaoFeminina = populacaoFeminina;
+        this.populacaoMasculina = populacaoMasculina;
+    }
+
     public Populacao() {
     }
 
